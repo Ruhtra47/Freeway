@@ -1,1 +1,45 @@
-timeout: failed to run command ‘Resultados/ArthurUlianaDeAngelo/completo/prog’: No such file or directory
+Pontos: 0 | Vidas: 4 | Iteracoes: 0
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                                                                     ^_^                                                                              |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                                    [-]                                                                  [-]                           [-]            |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|            [-]                                                                                                                        [-]            |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|      [-]                                          [-]                                             [-]                                                |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|            [-]                                                                           [-]                                                         |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|      [-]                                    [-]            [-]                     [-]            [-]                                 [-]            |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+Pontos: 1 | Vidas: 4 | Iteracoes: 1
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|[-]                                                [-]                                                                  [-]                           |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                  [-]                                                                                                                        [-]      |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                                       [-]                                             [-]                                                      [-]   |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|   [-]                                                                           [-]                                                                  |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|            [-]                                    [-]            [-]                     [-]            [-]                                 [-]      |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+|                                                                                                                                                      |
+Parabens! Voce atravessou todas as pistas e venceu!
