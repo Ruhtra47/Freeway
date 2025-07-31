@@ -2,13 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_COLUNAS 100
-#define MAX_LINHAS 35
-#define MAX_PISTAS 12
 #define MAX_CARROS 10
-#define MAX_CAMINHO_DIR 1000
+#define MAX_PISTAS 12
 
-#define NOME_ARQUIVO_CONFIGS "config_inicial.txt"
+typedef struct
+{
+    int x;
+    int y;
+
+    int vidas;
+    int pontos;
+} tGalinha;
 
 typedef struct
 {
@@ -25,111 +29,97 @@ typedef struct
 
 typedef struct
 {
-    int x;
-    int y;
-    int vidas;
-    int pontos;
-} tGalinha;
-
-typedef struct
-{
     int animacao;
     int largura_mapa;
     int qtd_pistas;
+
     tPista pistas[MAX_PISTAS];
     tGalinha galinha;
+
     int iteracao;
 } tJogo;
 
-tJogo InicializarJogo(tJogo jogo, char argv[]);
-tJogo CarregaConfigsJogo(tJogo jogo, char argv[]);
+tJogo InicializaJogo(tJogo jogo, char diretorio[]);
+
+void Debug(tJogo jogo);
 
 tJogo jogo;
 int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        printf("ERRO: Informe o diretorio com os arquivos de configuracao.\n");
+        printf("ERRO: Informe o diretorio com os arquivos de configuracao!\n");
         exit(1);
     }
 
-    InicializarJogo(jogo, argv[1]);
+    jogo = InicializaJogo(jogo, argv[1]);
 }
 
-tJogo InicializarJogo(tJogo jogo, char argv[])
+void Debug(tJogo jogo)
 {
-    jogo.iteracao = 0;
+    printf("JOGO:\nanimacao:%d\nlargura:%d\nqtd_pistas:%d\n", jogo.animacao, jogo.largura_mapa, jogo.qtd_pistas);
+    printf("GALINHA:\nx:%d\ny:%d\nvidas:%d\npontos:%d\n", jogo.galinha.x, jogo.galinha.y, jogo.galinha.vidas, jogo.galinha.pontos);
 
-    jogo = CarregaConfigsJogo(jogo, argv[1]);
-}
-
-tJogo CarregaConfigsJogo(tJogo jogo, char diretorio[])
-{
-    char nome_arquivo[1100];
-    strcpy(nome_arquivo, diretorio[1]);
-    strcat(nome_arquivo, NOME_ARQUIVO_CONFIGS);
-
-    FILE *arquivo;
-    arquivo = fopen(nome_arquivo, "r");
-
-    if (arquivo == NULL)
-    {
-        printf("ERRO: Nao foi possivel ler o arquivo %s\n", nome_arquivo);
-        exit(1);
-    }
-
-    int i = 0, j = 0;
-
-    fscanf(arquivo, "%d", &jogo.animacao);
-    fscanf(arquivo, "%d %d", &jogo.largura_mapa, &jogo.qtd_pistas);
-
-    fgetc(arquivo); // Le o \n
-
+    int i;
     for (i = 0; i < jogo.qtd_pistas; i++)
     {
-        char linha[200];
-        fgets(linha, 200, arquivo);
+        printf("PISTA:%d\ndir:%c\nvel:%d\nnum_carros:%d\n", i, jogo.pistas[i].direcao, jogo.pistas[i].velocidade, jogo.pistas[i].num_carros);
 
-        if (linha[0] == 'G')
+        int j;
+        for (j = 0; j < jogo.pistas[i].num_carros; j++)
         {
-            jogo.galinha = InicializarGalinha(jogo.galinha);
-            jogo.galinha = LeGalinha(jogo.galinha, linha);
-        }
-        else if ((linha[0] == 'E') || (linha[0] == 'D'))
-        {
-            char direcao;
-            int velocidade, num_carros;
-            tPista pista;
-            sscanf(linha, "%c %d %d", &pista.direcao, &pista.velocidade, &pista.num_carros);
-
-            int j = 0;
-            for (j = 0; j < num_carros; j++)
-            {
-                tCarro carro;
-
-                sscanf(linha, " %d", &carro.x);
-
-                pista.carros[j] = carro;
-            }
+            printf("CARRO:%d\n", jogo.pistas[i].carros[j].x);
         }
     }
 }
 
-tGalinha InicializarGalinha(tGalinha galinha, int qtd_pistas, int indice_pista)
+tJogo InicializaJogo(tJogo jogo, char diretorio[])
 {
-    galinha.x = 0;
-    galinha.y = CalculaYGalinha(qtd_pistas, indice_pista);
-    galinha.vidas = 0;
-    galinha.pontos = 0;
-}
+    char arquivo_config_nome[1100];
+    strcpy(arquivo_config_nome, diretorio);
+    strcat(arquivo_config_nome, "config_inicial.txt");
 
-int CalculaYGalinha(int qtd_pistas, int indice_pista)
-{
-    return 1 + (qtd_pistas - 1 - indice_pista) * 3 + 1;
-}
+    FILE *arquivo_config = fopen(arquivo_config_nome, "r");
 
-tGalinha LeGalinha(tGalinha galinha, char linha[])
-{
-    sscanf(linha, "G %d %d", &galinha.x, &galinha.vidas);
-    return galinha;
+    if (arquivo_config == NULL)
+    {
+        printf("ERRO: Erro ao abrir o arquivo de configuracao inicial.\n");
+        exit(1);
+    }
+
+    // TESTADO
+    fscanf(arquivo_config, "%d\n%d %d", &jogo.animacao, &jogo.largura_mapa, &jogo.qtd_pistas);
+
+    // FUNCIONOU
+    int i;
+    for (i = 1; i < jogo.qtd_pistas; i++)
+    {
+        char direcao;
+        fscanf(arquivo_config, "\n%c ", &direcao);
+
+        if (direcao == 'G')
+        {
+            // TESTADO
+            fscanf(arquivo_config, " %d %d", &jogo.galinha.x, &jogo.galinha.vidas);
+        }
+        else if (direcao == 'E' || direcao == 'D')
+        {
+            jogo.pistas[i].direcao = direcao;
+            int velocidade, num_carros;
+            fscanf(arquivo_config, " %d %d", &jogo.pistas[i].velocidade, &jogo.pistas[i].num_carros);
+
+            int j;
+            for (j = 0; j < num_carros; j++)
+            {
+                // nao funciona ainda
+                fscanf(arquivo_config, "%d", &jogo.pistas[i].carros[j].x);
+            }
+        }
+
+        fscanf(arquivo_config, "%*[^\n]");
+    }
+
+    Debug(jogo);
+
+    return jogo;
 }
