@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
+#define VITORIA 1
+#define DERROTA 2
 
 #define MAX_CARROS 10
 #define MAX_PISTAS 12
@@ -55,9 +59,12 @@ void JogaJogo(tJogo jogo);
 
 void DesenhaMapa(tJogo jogo, FILE *saida);
 
+int VerificaVitoria(tJogo jogo);
+tJogo ResetaJogo(tJogo jogo);
 char LeJogada();
 tJogo FazJogada(char jogada, tJogo jogo);
-tJogo VerificaColisoes(tJogo jogo);
+tJogo DeslocarCarrosJogo(tJogo jogo);
+int VerificaColisoes(tJogo jogo);
 
 void Debug(tJogo jogo);
 
@@ -104,23 +111,104 @@ void Debug(tJogo jogo)
     printf("\n");
 }
 
+tJogo DeslocarCarrosJogo(tJogo jogo)
+{
+    int i, j;
+    for (i = 0; i < jogo.qtd_pistas; i++)
+    {
+        for (j = 0; j < jogo.pistas[i].num_carros; j++)
+        {
+            int pos = jogo.pistas[i].carros[j].x;
+
+            if (jogo.pistas[i].direcao == 'E')
+            {
+                pos -= jogo.pistas[i].velocidade;
+            }
+            else if (jogo.pistas[i].direcao == 'D')
+            {
+                pos += jogo.pistas[i].velocidade;
+            }
+
+            if (pos < 0)
+            {
+                pos = jogo.largura_mapa - pos;
+            }
+
+            if (pos >= jogo.largura_mapa)
+            {
+                pos %= jogo.largura_mapa;
+            }
+
+            jogo.pistas[i].carros[j].x = pos;
+        }
+    }
+
+    return jogo;
+}
+
 char LeJogada()
 {
     char jogada;
-    scanf("%c\n", &jogada);
+    if (scanf("%c\n", &jogada) == 1)
+        return jogada;
 
-    return jogada;
+    return '\0';
+}
+
+int VerificaVitoria(tJogo jogo)
+{
+    if (jogo.galinha.y == 0 && !VerificaColisoes(jogo))
+    {
+        return 1;
+    }
+
+    return 0;
+}
+
+tJogo ResetaJogo(tJogo jogo)
+{
+    jogo.galinha.y = jogo.qtd_pistas - 1;
+    jogo.fim = 0;
+
+    return jogo;
 }
 
 void JogaJogo(tJogo jogo)
 {
     while (!jogo.fim)
     {
+        jogo.iteracao++;
         char jogada = LeJogada();
+        jogo = FazJogada(jogada, jogo);
 
-        FazJogada(jogada, jogo);
+        int vitoria = VerificaVitoria(jogo);
+        if (vitoria)
+        {
+            // TODO: finalizar o jogo na vitória
+            jogo.fim = 1;
+        }
+
+        int colisao = VerificaColisoes(jogo);
+
+        if (colisao)
+        {
+            jogo.galinha.vidas--;
+            // TODO: Resetar o jogo
+            // Ver onde os carros devem ir: posição inicial ou se manter onde estão?
+        }
 
         DesenhaMapa(jogo, stdout);
+    }
+
+    if (jogo.fim == VITORIA)
+    {
+        // TODO: Finalizar na vitória
+        printf("Vitoria\n");
+    }
+    else if (jogo.fim == DERROTA)
+    {
+        // TODO: Finalizar na derrota
+        printf("Derrota\n");
     }
 }
 
@@ -134,13 +222,21 @@ tJogo FazJogada(char jogada, tJogo jogo)
     {
         jogo.galinha.y++;
     }
-    else if (jogada == ' ')
-    {
-    }
+
+    return jogo;
 }
 
-tJogo VerificaColisoes(tJogo jogo)
+int VerificaColisoes(tJogo jogo)
 {
+    int i = jogo.galinha.y;
+    int j;
+    for (j = 0; j < jogo.pistas[i].num_carros; j++)
+    {
+        if (jogo.galinha.x == jogo.pistas[i].carros[j].x)
+            return 1;
+    }
+
+    return 0;
 }
 
 void GeraArquivoInicializacao(tJogo jogo, char diretorio[])
@@ -183,12 +279,12 @@ void DesenhaMapa(tJogo jogo, FILE *saida)
     {
         for (j = 0; j < jogo.pistas[i].num_carros; j++)
         {
-            mapa[i * 2][jogo.pistas[i].carros[j].x - 1 - 1] = jogo.sprites.carro[0];
+            mapa[i * 2][jogo.pistas[i].carros[j].x - 1 - 1 < 0 ? jogo.largura_mapa - 1 : jogo.pistas[i].carros[j].x - 1 - 1] = jogo.sprites.carro[0];
             mapa[i * 2][jogo.pistas[i].carros[j].x - 1] = jogo.sprites.carro[1];
-            mapa[i * 2][jogo.pistas[i].carros[j].x + 1 - 1] = jogo.sprites.carro[2];
-            mapa[(i * 2) + 1][jogo.pistas[i].carros[j].x - 1 - 1] = jogo.sprites.carro[3];
+            mapa[i * 2][jogo.pistas[i].carros[j].x + 1 - 1 >= jogo.largura_mapa ? 0 : jogo.pistas[i].carros[j].x + 1 - 1] = jogo.sprites.carro[2];
+            mapa[(i * 2) + 1][jogo.pistas[i].carros[j].x - 1 - 1 < 0 ? jogo.largura_mapa - 1 : jogo.pistas[i].carros[j].x - 1 - 1] = jogo.sprites.carro[3];
             mapa[(i * 2) + 1][jogo.pistas[i].carros[j].x - 1] = jogo.sprites.carro[4];
-            mapa[(i * 2) + 1][jogo.pistas[i].carros[j].x + 1 - 1] = jogo.sprites.carro[5];
+            mapa[(i * 2) + 1][jogo.pistas[i].carros[j].x + 1 - 1 >= jogo.largura_mapa ? 0 : jogo.pistas[i].carros[j].x + 1 - 1] = jogo.sprites.carro[5];
         }
     }
 
@@ -283,51 +379,155 @@ tJogo InicializaJogo(tJogo jogo, char diretorio[])
         exit(1);
     }
 
-    // TESTADO
-    fscanf(arquivo_config, "%d\n%d %d", &jogo.animacao, &jogo.largura_mapa, &jogo.qtd_pistas);
+    fscanf(arquivo_config, "%d\n%d %d\n", &jogo.animacao, &jogo.largura_mapa, &jogo.qtd_pistas);
 
-    // FUNCIONOU
     int i;
+    char linha[256];
     for (i = 1; i < jogo.qtd_pistas; i++)
     {
-        char direcao;
-        fscanf(arquivo_config, "\n%c ", &direcao);
+        if (!fgets(linha, sizeof(linha), arquivo_config))
+            break;
 
-        if (direcao == 'G')
+        linha[strcspn(linha, "\r\n")] = '\0';
+
+        if (strlen(linha) == 0)
         {
-            // TESTADO
-            fscanf(arquivo_config, " %d %d", &jogo.galinha.x, &jogo.galinha.vidas);
+            jogo.pistas[i].direcao = '\0';
+            jogo.pistas[i].velocidade = 0;
+            jogo.pistas[i].num_carros = 0;
+            continue;
+        }
+
+        if (linha[0] == 'G')
+        {
+            printf("G %s\n", linha);
+
+            char letra;
+            sscanf(linha, "%c %d %d", &letra, &jogo.galinha.x, &jogo.galinha.vidas);
             jogo.galinha.y = i;
+            continue;
         }
-        else if (direcao == 'E' || direcao == 'D')
+
+        sscanf(linha, "%c %d %d ", &jogo.pistas[i].direcao, &jogo.pistas[i].velocidade, &jogo.pistas[i].num_carros);
+
+        int offset = 0;
+
+        int skip = 0, count = 0;
+        for (count = 0; count < 3; count++)
         {
-            jogo.pistas[i].direcao = direcao;
-            int velocidade, num_carros;
-            fscanf(arquivo_config, " %d %d", &jogo.pistas[i].velocidade, &jogo.pistas[i].num_carros);
-
-            int j;
-            for (j = 0; j < jogo.pistas[i].num_carros; j++)
-            {
-                // nao funciona ainda
-                fscanf(arquivo_config, " %d", &jogo.pistas[i].carros[j].x);
-                // printf("teste:%d\n", jogo.pistas[i].carros[j].x);
-            }
+            while (linha[offset] && !isspace(linha[offset]))
+                offset++;
+            while (linha[offset] && isspace(linha[offset]))
+                offset++;
         }
-
-        fscanf(arquivo_config, "%*[^\n]");
     }
-
-    jogo.sprites = CarregaSprites(diretorio);
-
-    Debug(jogo);
-
-    fclose(arquivo_config);
-
-    jogo.iteracao = 0;
-    jogo.fim = 0;
-
-    DesenhaMapa(jogo, stdout);
-    GeraArquivoInicializacao(jogo, diretorio);
 
     return jogo;
 }
+
+// tJogo Antigo(tJogo jogo, char diretorio[])
+// {
+//     char arquivo_config_nome[1100];
+//     sprintf(arquivo_config_nome, "%s/config_inicial.txt", diretorio);
+
+//     FILE *arquivo_config = fopen(arquivo_config_nome, "r");
+
+//     if (arquivo_config == NULL)
+//     {
+//         printf("ERRO: Erro ao abrir o arquivo de configuracao inicial.\n");
+//         exit(1);
+//     }
+
+//     // TESTADO
+//     fscanf(arquivo_config, "%d\n%d %d\n", &jogo.animacao, &jogo.largura_mapa, &jogo.qtd_pistas);
+
+//     // FUNCIONOU
+//     int i;
+//     char linha[256];
+//     for (i = 1; i < jogo.qtd_pistas; i++)
+//     {
+//         if (!fgets(linha, sizeof(linha), arquivo_config))
+//             break;
+
+//         linha[strcspn(linha, "\r\n")] = '\0';
+
+//         if (strlen(linha) == 0)
+//         {
+//             jogo.pistas[i].direcao = '\0';
+//             jogo.pistas[i].velocidade = 0;
+//             jogo.pistas[i].num_carros = 0;
+//             continue;
+//         }
+
+//         if (linha[0] == 'G')
+//         {
+//             char letra;
+//             sscanf(linha, "%c %d %d", &letra, &jogo.galinha.x, &jogo.galinha.vidas);
+//             jogo.galinha.y = i;
+//             continue;
+//         }
+
+//         sscanf(linha, "%c %d %d", &jogo.pistas[i].direcao, &jogo.pistas[i].velocidade, &jogo.pistas[i].num_carros);
+
+//         int offset = 0;
+//         int skip = 0, count = 0;
+//         for (skip = 0, count = 0; count < 3; count++)
+//         {
+//             while (linha[offset] && !isspace((unsigned char)linha[offset]))
+//                 offset++;
+//             while (linha[offset] && isspace((unsigned char)linha[offset]))
+//                 offset++;
+//         }
+
+//         char *ptr = linha + offset;
+//         for (int c = 0; c < jogo.pistas[i].num_carros; c++)
+//         {
+//             sscanf(ptr, "%d", &jogo.pistas[i].carros[c].x);
+//             while (*ptr && !isspace((unsigned char)*ptr))
+//                 ptr++;
+//             while (*ptr && isspace((unsigned char)*ptr))
+//                 ptr++;
+//         }
+
+//         char direcao;
+
+//         printf("%c: %d\n", direcao, direcao);
+
+//         if (direcao == 'G')
+//         {
+//             // TESTADO
+//             fscanf(arquivo_config, " %d %d", &jogo.galinha.x, &jogo.galinha.vidas);
+//             jogo.galinha.y = i;
+//         }
+//         else if (direcao == 'E' || direcao == 'D')
+//         {
+//             jogo.pistas[i].direcao = direcao;
+//             int velocidade, num_carros;
+//             fscanf(arquivo_config, " %d %d", &jogo.pistas[i].velocidade, &jogo.pistas[i].num_carros);
+
+//             int j;
+//             for (j = 0; j < jogo.pistas[i].num_carros; j++)
+//             {
+//                 // nao funciona ainda
+//                 fscanf(arquivo_config, " %d", &jogo.pistas[i].carros[j].x);
+//                 // printf("teste:%d\n", jogo.pistas[i].carros[j].x);
+//             }
+//         }
+
+//         fscanf(arquivo_config, "%*[^\n]\n");
+//     }
+
+//     jogo.sprites = CarregaSprites(diretorio);
+
+//     Debug(jogo);
+
+//     fclose(arquivo_config);
+
+//     jogo.iteracao = 0;
+//     jogo.fim = 0;
+
+//     DesenhaMapa(jogo, stdout);
+//     GeraArquivoInicializacao(jogo, diretorio);
+
+//     return jogo;
+// }
