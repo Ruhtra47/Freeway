@@ -2,23 +2,23 @@
 |                                             |
 |                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S          BUS               BUS    BUSBUS BU|
-|0          0O0               0O0    0O00O0 0O|
+|          BUS               BUS    BUSBUS BUS|
+|          0O0               0O0    0O00O0 0O0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|   BUS   BUS              BUS   BUS  BUSBUS  |
-|   0O0   0O0              0O0   0O0  0O00O0  |
+|  BUS   BUS              BUS   BUS  BUSBUS   |
+|  0O0   0O0              0O0   0O0  0O00O0   |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|   BUS BUS      BUS    BUS      BUS   BUS    |
-|   0O0 0O0      0O0    0O0      0O0   0O0    |
+|  BUS BUS      BUS    BUS      BUS   BUS     |
+|  0O0 0O0      0O0    0O0      0O0   0O0     |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S       BUS                                BU|
-|0       0O0                                0O|
+|       BUS                                BUS|
+|       0O0                                0O0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-| BUS                      BUSBUS             |
-| 0O0                      0O00O0             |
+|BUS                      BUSBUS              |
+|0O0                      0O00O0              |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|       BUS            BUS    BUSBUS          |
-|       0O0            0O0    0O00O0          |
+|      BUS            BUS    BUSBUS           |
+|      0O0            0O0    0O00O0           |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                                             |
 |                                             |

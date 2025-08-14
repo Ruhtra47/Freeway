@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
-
-#define VITORIA 1
-#define DERROTA 2
 
 #define VITORIA 1
 #define DERROTA 2
@@ -66,8 +62,6 @@ tJogo JogaJogo(tJogo jogo);
 
 void DesenhaMapa(tJogo jogo, FILE *saida);
 
-int VerificaVitoria(tJogo jogo);
-tJogo ResetaJogo(tJogo jogo);
 char LeJogada();
 tJogo FazJogada(char jogada, tJogo jogo);
 int VerificaColisoes(tJogo jogo);
@@ -134,41 +128,6 @@ void Debug(tJogo jogo)
     printf("\n");
 }
 
-tJogo DeslocarCarrosJogo(tJogo jogo)
-{
-    int i, j;
-    for (i = 0; i < jogo.qtd_pistas; i++)
-    {
-        for (j = 0; j < jogo.pistas[i].num_carros; j++)
-        {
-            int pos = jogo.pistas[i].carros[j].x;
-
-            if (jogo.pistas[i].direcao == 'E')
-            {
-                pos -= jogo.pistas[i].velocidade;
-            }
-            else if (jogo.pistas[i].direcao == 'D')
-            {
-                pos += jogo.pistas[i].velocidade;
-            }
-
-            if (pos < 0)
-            {
-                pos = jogo.largura_mapa - pos;
-            }
-
-            if (pos >= jogo.largura_mapa)
-            {
-                pos %= jogo.largura_mapa;
-            }
-
-            jogo.pistas[i].carros[j].x = pos;
-        }
-    }
-
-    return jogo;
-}
-
 char LeJogada()
 {
     char jogada;
@@ -180,25 +139,7 @@ char LeJogada()
             ;
     }
 
-    return '\0';
-}
-
-int VerificaVitoria(tJogo jogo)
-{
-    if (jogo.galinha.y == 0 && !VerificaColisoes(jogo))
-    {
-        return 1;
-    }
-
-    return 0;
-}
-
-tJogo ResetaJogo(tJogo jogo)
-{
-    jogo.galinha.y = jogo.qtd_pistas - 1;
-    jogo.fim = 0;
-
-    return jogo;
+    return jogada;
 }
 
 tJogo DeslocaTodasPistas(tJogo jogo)
@@ -216,9 +157,7 @@ tJogo JogaJogo(tJogo jogo)
 {
     while (!jogo.fim)
     {
-        jogo.iteracao++;
         char jogada = LeJogada();
-        jogo = FazJogada(jogada, jogo);
 
         // printf("Jogada: %d %c | ", jogada, jogada);
         DesenhaMapa(jogo, stdout);
