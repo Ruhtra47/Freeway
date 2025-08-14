@@ -1,0 +1,12 @@
+{
+	"alunos": [
+		{
+			"Nome":"ArthurUlianaDeAngelo",
+			"Nota":.45
+		},
+		{
+			"Nome":"ArthurUlianaDeAngelo/saida",
+			"Nota":0
+		}
+	]
+}

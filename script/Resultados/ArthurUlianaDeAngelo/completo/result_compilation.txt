@@ -1,0 +1,23 @@
+ArthurUlianaDeAngelo.c: In function ‘main’:
+ArthurUlianaDeAngelo.c:83:5: warning: implicit declaration of function ‘ImprimeFimJogo’ [-Wimplicit-function-declaration]
+   83 |     ImprimeFimJogo(jogo);
+      |     ^~~~~~~~~~~~~~
+ArthurUlianaDeAngelo.c: At top level:
+ArthurUlianaDeAngelo.c:88:6: warning: conflicting types for ‘ImprimeFimJogo’; have ‘void(tJogo)’
+   88 | void ImprimeFimJogo(tJogo jogo)
+      |      ^~~~~~~~~~~~~~
+ArthurUlianaDeAngelo.c:83:5: note: previous implicit declaration of ‘ImprimeFimJogo’ with type ‘void(tJogo)’
+   83 |     ImprimeFimJogo(jogo);
+      |     ^~~~~~~~~~~~~~
+ArthurUlianaDeAngelo.c: In function ‘JogaJogo’:
+ArthurUlianaDeAngelo.c:182:20: warning: implicit declaration of function ‘VerificaFim’ [-Wimplicit-function-declaration]
+  182 |         jogo.fim = VerificaFim(jogo);
+      |                    ^~~~~~~~~~~
+ArthurUlianaDeAngelo.c: In function ‘VerificaColisoes’:
+ArthurUlianaDeAngelo.c:258:9: warning: unused variable ‘i’ [-Wunused-variable]
+  258 |     int i, j;
+      |         ^
+ArthurUlianaDeAngelo.c: In function ‘DesenhaMapa’:
+ArthurUlianaDeAngelo.c:347:16: warning: too many arguments for format [-Wformat-extra-args]
+  347 |         printf("Pontos: %d | Vidas: %d | Iteracoes: %d\n", jogo.galinha.pontos, jogo.galinha.vidas, jogo.iteracao, jogo.galinha.y);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

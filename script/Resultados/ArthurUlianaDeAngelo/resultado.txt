@@ -2,7 +2,7 @@ Arquivos Esperados Corretos: 0 de 1
 Pastas Compiladas Corretamente: 1 de 1 
 Pastas Linkadas Corretamente: 1 de 1
 Teste completo
-  - Resultados corretos: 0 de 144
-Nota de ArthurUlianaDeAngelo para o teste completo: 0
-Nota de ArthurUlianaDeAngelo: 0+(0)
-Nota de ArthurUlianaDeAngelo: 0
+  - Resultados corretos: 4 de 144
+Nota de ArthurUlianaDeAngelo para o teste completo: .36
+Nota de ArthurUlianaDeAngelo: 0+(.36)
+Nota de ArthurUlianaDeAngelo: .36
