@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ArthurUlianaDeAngelo.c: In function ‘main’:
 ArthurUlianaDeAngelo.c:83:5: warning: implicit declaration of function ‘ImprimeFimJogo’ [-Wimplicit-function-declaration]
    83 |     ImprimeFimJogo(jogo);
@@ -21,3 +22,9 @@ ArthurUlianaDeAngelo.c: In function ‘DesenhaMapa’:
 ArthurUlianaDeAngelo.c:347:16: warning: too many arguments for format [-Wformat-extra-args]
   347 |         printf("Pontos: %d | Vidas: %d | Iteracoes: %d\n", jogo.galinha.pontos, jogo.galinha.vidas, jogo.iteracao, jogo.galinha.y);
       |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=======
+ArthurUlianaDeAngelo.c: In function ‘VerificaColisoes’:
+ArthurUlianaDeAngelo.c:142:1: warning: control reaches end of non-void function [-Wreturn-type]
+  142 | }
+      | ^
+>>>>>>> main

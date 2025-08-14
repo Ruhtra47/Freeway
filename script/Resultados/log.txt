@@ -37,10 +37,17 @@ EXECUTANDO O PROGRAMA EM CADA CASO:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/1/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/1/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/1/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/1/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/1/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/1/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso 10:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/10/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
@@ -61,18 +68,32 @@ EXECUTANDO O PROGRAMA EM CADA CASO:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/12/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/12/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/12/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/12/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/12/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/12/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso 13:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/13/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/13/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/13/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/13/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/13/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/13/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso 14:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/14/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
@@ -109,26 +130,47 @@ EXECUTANDO O PROGRAMA EM CADA CASO:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/18/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/18/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/18/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/18/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/18/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/18/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso 19:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/19/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/19/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/19/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/19/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/19/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/19/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso 2:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/2/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/2/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/2/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/2/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/2/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/2/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso 20:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/20/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
@@ -157,18 +199,32 @@ EXECUTANDO O PROGRAMA EM CADA CASO:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/4/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/4/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/4/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/4/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/4/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/4/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso 5:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/5/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/5/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/5/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/5/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/5/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/5/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso 6:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/6/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
@@ -197,18 +253,32 @@ EXECUTANDO O PROGRAMA EM CADA CASO:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/9/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/9/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/9/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/9/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/9/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/9/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso bonus_1:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_1/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_1/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_1/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_1/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_1/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_1/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+>>>>>>> main
  - Pasta completo / Caso bonus_2:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_2/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
@@ -221,11 +291,19 @@ EXECUTANDO O PROGRAMA EM CADA CASO:
  - Resultado para o saida.txt: Incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_3/saida/estatistica.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_3/saida/heatmap.txt, considerando resultado incorreto! Peso: 0.0
+<<<<<<< HEAD
  - Resultado para o inicializacao.txt: Ok! Peso: 1.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_3/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
  - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_3/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
  - Nota para o Caso (soma dos pesos): 1.00 (soma total) - 0% (desconto do valgrind) = 1.00 de 8.0 pontos.
  - Nota para a pasta completo (máximo 9.0) - 11.00 de 192.0 - 5.00% de 9.0: .45.
+=======
+ - Resultado para o inicializacao.txt: Incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_3/saida/ranking.txt, considerando resultado incorreto! Peso: 0.0
+ - O aluno não gerou o arquivo de saída Resultados/ArthurUlianaDeAngelo/completo/Casos/bonus_3/saida/resumo.txt, considerando resultado incorreto! Peso: 0.0
+ - Nota para o Caso (soma dos pesos): 0 (soma total) - 0% (desconto do valgrind) = 0 de 8.0 pontos.
+ - Nota para a pasta completo (máximo 9.0) - 0 de 192.0 - 0% de 9.0: 0.
+>>>>>>> main
  -----
 
 #######################################
@@ -276,10 +354,17 @@ Aluno: ArthurUlianaDeAngelo
  - Pastas Compiladas Corretamente: 1 de 1 
  - Pastas Linkadas Corretamente: 1 de 1
  - Teste completo
+<<<<<<< HEAD
  - Resultados corretos: 11 de 144
  - Nota de ArthurUlianaDeAngelo para o teste completo: .45
  - Nota de ArthurUlianaDeAngelo: 0+(.45)
  - Nota de ArthurUlianaDeAngelo: .45
+=======
+ - Resultados corretos: 0 de 144
+ - Nota de ArthurUlianaDeAngelo para o teste completo: 0
+ - Nota de ArthurUlianaDeAngelo: 0+(0)
+ - Nota de ArthurUlianaDeAngelo: 0
+>>>>>>> main
 
 ----------------------------------------------------------------------------
 Aluno: ArthurUlianaDeAngelo/saida

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Pontos: 0 | Vidas: 5 | Iteracoes: 0
 |-----------------------------------------------|
 |                                               |
@@ -2000,3 +2001,5 @@ Pontos: 0 | Vidas: 0 | Iteracoes: 68
 |                            (o)                |
 |-----------------------------------------------|
 Voce perdeu todas as vidas! Fim de jogo.
+=======
+>>>>>>> main

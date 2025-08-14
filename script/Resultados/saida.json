@@ -2,7 +2,11 @@
 	"alunos": [
 		{
 			"Nome":"ArthurUlianaDeAngelo",
+<<<<<<< HEAD
 			"Nota":.45
+=======
+			"Nota":0
+>>>>>>> main
 		},
 		{
 			"Nome":"ArthurUlianaDeAngelo/saida",

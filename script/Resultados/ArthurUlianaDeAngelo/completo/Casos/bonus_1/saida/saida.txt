@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Pontos: 0 | Vidas: 5 | Iteracoes: 0
 |---------------------------|
 |                           |
@@ -299,3 +300,5 @@ Pontos: 17 | Vidas: 3 | Iteracoes: 14
 |                           |
 |---------------------------|
 Parabens! Voce atravessou todas as pistas e venceu!
+=======
+>>>>>>> main
