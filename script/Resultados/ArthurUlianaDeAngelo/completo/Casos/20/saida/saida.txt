@@ -48,10 +48,10 @@ Pontos: 1 | Vidas: 5 | Iteracoes: 1
 |      0O0 0O0      0O0    0O0      0O0   0O0 |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |    BUS                                BUS   |
-|    0O0                                0O0  U|
+|    0O0                                0O0   |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S                      BUSBUS               O|
-|0                      0O00O0               0|
+|S                      BUSBUS              BU|
+|0                      0O00O0              0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |    BUS            BUS    BUSBUS             |
 |    0O0            0O0    0O00O0             |
@@ -112,13 +112,13 @@ Pontos: 3 | Vidas: 5 | Iteracoes: 3
 |O00O0 0O0          0O0               0O0    0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |US   BUS              BUS   BUS  BUSBUS     B|
-|O0   0O0              0O0   0O0  0O00O0     U|
+|O0   0O0              0O0   0O0  0O00O0     0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S   BUS       BUS BUS      BUS    BUS       O|
-|0   0O0       0O0 0O0      0O0    0O0       U|
+|S   BUS       BUS BUS      BUS    BUS      BU|
+|0   0O0       0O0 0O0      0O0    0O0      0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S                                BUS        O|
-|0                                0O0        0|
+|S                                BUS       BU|
+|0                                0O0       0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                   BUSBUS              BUS   |
 |                   0O00O0              0O0   |
@@ -144,10 +144,10 @@ Pontos: 4 | Vidas: 5 | Iteracoes: 4
 |                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |  BUSBUS BUS          BUS               BUS  |
-|  0O00O0 0O0          0O0               0O0 U|
+|  0O00O0 0O0          0O0               0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S   BUS              BUS   BUS  BUSBUS      O|
-|0   0O0              0O0   0O0  0O00O0      0|
+|S   BUS              BUS   BUS  BUSBUS     BU|
+|0   0O0              0O0   0O0  0O00O0     0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |  BUS   BUS       BUS BUS      BUS    BUS    |
 |  0O0   0O0       0O0 0O0      0O0    0O0    |
@@ -156,10 +156,10 @@ Pontos: 4 | Vidas: 5 | Iteracoes: 4
 |                              0O0       0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                 BUSBUS              BUS     |
-|                 0O00O0              0O0    U|
+|                 0O00O0              0O0     |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S            BUS    BUSBUS     ^_^          O|
-|0            0O0    0O00O0     (o)          0|
+|S            BUS    BUSBUS     ^_^         BU|
+|0            0O0    0O00O0     (o)         0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                                             |
 |                                             |
@@ -176,10 +176,10 @@ Pontos: 4 | Vidas: 5 | Iteracoes: 4
 Pontos: 5 | Vidas: 5 | Iteracoes: 5
 |---------------------------------------------|
 |                                             |
-|                                            U|
+|                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S    BUSBUS BUS          BUS                O|
-|0    0O00O0 0O0          0O0                0|
+|S    BUSBUS BUS          BUS               BU|
+|0    0O00O0 0O0          0O0               0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |   BUS              BUS   BUS  BUSBUS     BUS|
 |   0O0              0O0   0O0  0O00O0     0O0|
@@ -252,10 +252,10 @@ Pontos: 5 | Vidas: 5 | Iteracoes: 7
 |    0O0    0O00O0 0O0          0O0           |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 | BUS              BUS   BUS  BUSBUS     BUS  |
-| 0O0              0O0   0O0  0O00O0     0O0 U|
+| 0O0              0O0   0O0  0O00O0     0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S    BUS      BUS   BUS       BUS BUS       O|
-|0    0O0      0O0   0O0       0O0 0O0       0|
+|S    BUS      BUS   BUS       BUS BUS      BU|
+|0    0O0      0O0   0O0       0O0 0O0      0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                     BUS       BUS           |
 |                     0O0       0O0           |
@@ -354,10 +354,10 @@ Pontos: 1 | Vidas: 4 | Iteracoes: 10
 |                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |             BUS    BUSBUS BUS          BUS  |
-|             0O0    0O00O0 0O0          0O0 U|
+|             0O0    0O00O0 0O0          0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S              BUS   BUS  BUSBUS     BUS    O|
-|0              0O0   0O0  0O00O0     0O0    0|
+|S              BUS   BUS  BUSBUS     BUS   BU|
+|0              0O0   0O0  0O00O0     0O0   0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 | BUS      BUS    BUS      BUS   BUS       BUS|
 | 0O0      0O0    0O0      0O0   0O0       0O0|
@@ -386,10 +386,10 @@ Pontos: 1 | Vidas: 4 | Iteracoes: 10
 Pontos: 2 | Vidas: 4 | Iteracoes: 11
 |---------------------------------------------|
 |                                             |
-|                                            U|
+|                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S               BUS    BUSBUS BUS           O|
-|0               0O0    0O00O0 0O0           0|
+|S               BUS    BUSBUS BUS          BU|
+|0               0O0    0O00O0 0O0          0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |              BUS   BUS  BUSBUS     BUS   BUS|
 |              0O0   0O0  0O00O0     0O0   0O0|
@@ -538,13 +538,13 @@ Pontos: 6 | Vidas: 4 | Iteracoes: 15
 | 0O0   0O0       0O0 0O0      0O0    0O0     |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |       BUS                     ^_^        BUS|
-|       0O0                     (o)        0OU|
+|       0O0                     (o)        0O0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S              BUS                      BUS O|
-|0              0O0                      0O0 U|
+|S              BUS                      BUSBU|
+|0              0O0                      0O00O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|SBUS                 BUS            BUS     O|
-|00O0                 0O0            0O0     0|
+|SBUS                 BUS            BUS    BU|
+|00O0                 0O0            0O0    0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                                             |
 |                                             |
@@ -640,10 +640,10 @@ Pontos: 1 | Vidas: 3 | Iteracoes: 18
 |       0O0   0O0  0O00O0     0O0   0O0       |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |    BUS      BUS   BUS       BUS BUS      BUS|
-|    0O0      0O0   0O0       0O0 0O0      0OU|
+|    0O0      0O0   0O0       0O0 0O0      0O0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S                                BUS        O|
-|0                                0O0        0|
+|S                                BUS       BU|
+|0                                0O0       0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |         BUS                      BUSBUS     |
 |         0O0                      0O00O0     |
@@ -701,10 +701,10 @@ Pontos: 2 | Vidas: 3 | Iteracoes: 19
 Pontos: 3 | Vidas: 3 | Iteracoes: 20
 |---------------------------------------------|
 |                                             |
-|                                            U|
+|                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S    BUSBUS BUS          BUS                O|
-|0    0O00O0 0O0          0O0                0|
+|S    BUSBUS BUS          BUS               BU|
+|0    0O00O0 0O0          0O0               0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |     BUS   BUS  BUSBUS     BUS   BUS         |
 |     0O0   0O0  0O00O0     0O0   0O0         |
@@ -847,10 +847,10 @@ Pontos: 5 | Vidas: 3 | Iteracoes: 24
 |          0O0    0O00O0 0O0          0O0     |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 | BUS   BUS  BUSBUS     BUS   BUS             |
-| 0O0   0O0  0O00O0     0O0   0O0            U|
+| 0O0   0O0  0O00O0     0O0   0O0             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S       BUS BUS      BUS    BUS      BUS    O|
-|0       0O0 0O0      0O0    0O0      0O0    0|
+|S       BUS BUS      BUS    BUS      BUS   BU|
+|0       0O0 0O0      0O0    0O0      0O0   0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |               BUS       BUS                 |
 |               0O0       0O0                 |
@@ -911,10 +911,10 @@ Pontos: 6 | Vidas: 3 | Iteracoes: 25
 Pontos: 7 | Vidas: 3 | Iteracoes: 26
 |---------------------------------------------|
 |                                             |
-|                                            U|
+|                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S               BUS    BUSBUS BUS           O|
-|0               0O0    0O00O0 0O0           0|
+|S               BUS    BUSBUS BUS          BU|
+|0               0O0    0O00O0 0O0          0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |US   BUS  BUSBUS     BUS   BUS              B|
 |O0   0O0  0O00O0     0O0   0O0              0|
@@ -949,10 +949,10 @@ Pontos: 8 | Vidas: 3 | Iteracoes: 27
 |                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 | BUS               BUS    BUSBUS BUS         |
-| 0O0               0O0    0O00O0 0O0        U|
+| 0O0               0O0    0O00O0 0O0         |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S   BUS  BUSBUS     BUS   BUS               O|
-|0   0O0  0O00O0     0O0   0O0               0|
+|S   BUS  BUSBUS     BUS   BUS              BU|
+|0   0O0  0O00O0     0O0   0O0              0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |    BUS   BUS       BUS BUS      BUS    BUS  |
 |    0O0   0O0       0O0 0O0      0O0    0O0  |
@@ -1159,16 +1159,16 @@ Pontos: 3 | Vidas: 2 | Iteracoes: 33
 |                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |USBUS BUS          BUS               BUS    B|
-|O00O0 0O0          0O0               0O0    U|
+|O00O0 0O0          0O0               0O0    0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S  BUSBUS     BUS   BUS              BUS    O|
-|0  0O00O0     0O0   0O0              0O0    0|
+|S  BUSBUS     BUS   BUS              BUS   BU|
+|0  0O00O0     0O0   0O0              0O0   0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |US BUS      BUS    BUS      BUS   BUS       B|
-|O0 0O0      0O0    0O0      0O0   0O0       U|
+|O0 0O0      0O0    0O0      0O0   0O0       0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S                                BUS        O|
-|0                                0O0        0|
+|S                                BUS       BU|
+|0                                0O0       0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |    BUSBUS              BUS                  |
 |    0O00O0              0O0                  |
@@ -1206,10 +1206,10 @@ Pontos: 3 | Vidas: 2 | Iteracoes: 34
 |                              0O0       0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |  BUSBUS              BUS                    |
-|  0O00O0              0O0                   U|
+|  0O00O0              0O0                    |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S    BUSBUS                 BUS             O|
-|0    0O00O0                 0O0             0|
+|S    BUSBUS                 BUS            BU|
+|0    0O00O0                 0O0            0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                               ^_^           |
 |                               (o)           |
@@ -1226,10 +1226,10 @@ Pontos: 3 | Vidas: 2 | Iteracoes: 34
 Pontos: 4 | Vidas: 2 | Iteracoes: 35
 |---------------------------------------------|
 |                                             |
-|                                            U|
+|                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S    BUSBUS BUS          BUS                O|
-|0    0O00O0 0O0          0O0                0|
+|S    BUSBUS BUS          BUS               BU|
+|0    0O00O0 0O0          0O0               0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 | BUSBUS     BUS   BUS              BUS   BUS |
 | 0O00O0     0O0   0O0              0O0   0O0 |
@@ -1273,10 +1273,10 @@ Pontos: 5 | Vidas: 2 | Iteracoes: 36
 | 0O0       0O0 0O0      0O0    0O0      0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                        BUS       BUS        |
-|                        0O0       0O0       U|
+|                        0O0       0O0        |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|SBUS              BUS          ^_^          O|
-|00O0              0O0          (o)          0|
+|SBUS              BUS          ^_^         BU|
+|00O0              0O0          (o)         0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 | BUSBUS                 BUS            BUS   |
 | 0O00O0                 0O0            0O0   |
@@ -1334,10 +1334,10 @@ Pontos: 5 | Vidas: 2 | Iteracoes: 38
 |                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |       BUS    BUSBUS BUS          BUS        |
-|       0O0    0O00O0 0O0          0O0       U|
+|       0O0    0O00O0 0O0          0O0        |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|SBUS     BUS   BUS              BUS   BUS   O|
-|00O0     0O0   0O0              0O0   0O0   0|
+|SBUS     BUS   BUS              BUS   BUS  BU|
+|00O0     0O0   0O0              0O0   0O0  0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |   BUS   BUS       BUS BUS      BUS    BUS   |
 |   0O0   0O0       0O0 0O0      0O0    0O0   |
@@ -1372,19 +1372,19 @@ Pontos: 6 | Vidas: 2 | Iteracoes: 39
 |          0O0    0O00O0 0O0          0O0     |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |BUS     BUS   BUS              BUS   BUS  BUS|
-|0O0     0O0   0O0              0O0   0O0  0OU|
+|0O0     0O0   0O0              0O0   0O0  0O0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S      BUS   BUS       BUS BUS      BUS     O|
-|0      0O0   0O0       0O0 0O0      0O0     0|
+|S      BUS   BUS       BUS BUS      BUS    BU|
+|0      0O0   0O0       0O0 0O0      0O0    0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |               BUS       BUS   ^_^           |
 |               0O0       0O0   (o)           |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |            BUS                      BUSBUS  |
-|            0O0                      0O00O0 U|
+|            0O0                      0O00O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S                 BUS            BUS    BUS O|
-|0                 0O0            0O0    0O0 0|
+|S                 BUS            BUS    BUSBU|
+|0                 0O0            0O0    0O00O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                                             |
 |                                             |
@@ -1436,13 +1436,13 @@ Pontos: 6 | Vidas: 2 | Iteracoes: 40
 Pontos: 6 | Vidas: 2 | Iteracoes: 41
 |---------------------------------------------|
 |                                             |
-|                                            U|
+|                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S               BUS    BUSBUS BUS           O|
-|0               0O0    0O00O0 0O0           U|
+|S               BUS    BUSBUS BUS          BU|
+|0               0O0    0O00O0 0O0          0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S     BUS   BUS              BUS   BUS  BUS O|
-|0     0O0   0O0              0O0   0O0  0O0 0|
+|S     BUS   BUS              BUS   BUS  BUSBU|
+|0     0O0   0O0              0O0   0O0  0O00O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |US    BUS      BUS   BUS       BUS BUS      B|
 |O0    0O0      0O0   0O0       0O0 0O0      0|
@@ -1512,10 +1512,10 @@ Pontos: 6 | Vidas: 2 | Iteracoes: 43
 |    0O0               0O0    0O00O0 0O0      |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |    BUS   BUS              BUS   BUS  BUSBUS |
-|    0O0   0O0              0O0   0O0  0O00O0U|
+|    0O0   0O0              0O0   0O0  0O00O0 |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S      BUS    BUS      BUS   BUS       BUS  O|
-|0      0O0    0O0      0O0   0O0       0O0  0|
+|S      BUS    BUS      BUS   BUS       BUS BU|
+|0      0O0    0O0      0O0   0O0       0O0 0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |   BUS       BUS               ^_^           |
 |   0O0       0O0               (o)           |
@@ -1547,10 +1547,10 @@ Pontos: 6 | Vidas: 2 | Iteracoes: 44
 |       0O0               0O0    0O00O0 0O0   |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |   BUS   BUS              BUS   BUS  BUSBUS  |
-|   0O0   0O0              0O0   0O0  0O00O0 U|
+|   0O0   0O0              0O0   0O0  0O00O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S BUS      BUS    BUS      BUS   BUS        O|
-|0 0O0      0O0    0O0      0O0   0O0        0|
+|S BUS      BUS    BUS      BUS   BUS       BU|
+|0 0O0      0O0    0O0      0O0   0O0       0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |BUS       BUS                  ^_^           |
 |0O0       0O0                  (o)           |
@@ -1623,10 +1623,10 @@ Pontos: 6 | Vidas: 2 | Iteracoes: 46
 |      0O0 0O0      0O0    0O0      0O0   0O0 |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |    BUS                        ^_^     BUS   |
-|    0O0                        (o)     0O0  U|
+|    0O0                        (o)     0O0   |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S                      BUSBUS               O|
-|0                      0O00O0               0|
+|S                      BUSBUS              BU|
+|0                      0O00O0              0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |    BUS            BUS    BUSBUS             |
 |    0O0            0O0    0O00O0             |
@@ -1687,13 +1687,13 @@ Pontos: 1 | Vidas: 1 | Iteracoes: 48
 |O00O0 0O0          0O0               0O0    0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |US   BUS              BUS   BUS  BUSBUS     B|
-|O0   0O0              0O0   0O0  0O00O0     U|
+|O0   0O0              0O0   0O0  0O00O0     0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S   BUS       BUS BUS      BUS    BUS       O|
-|0   0O0       0O0 0O0      0O0    0O0       U|
+|S   BUS       BUS BUS      BUS    BUS      BU|
+|0   0O0       0O0 0O0      0O0    0O0      0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S                                BUS        O|
-|0                                0O0        0|
+|S                                BUS       BU|
+|0                                0O0       0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                   BUSBUS              BUS   |
 |                   0O00O0              0O0   |
@@ -1719,10 +1719,10 @@ Pontos: 2 | Vidas: 1 | Iteracoes: 49
 |                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |  BUSBUS BUS          BUS               BUS  |
-|  0O00O0 0O0          0O0               0O0 U|
+|  0O00O0 0O0          0O0               0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S   BUS              BUS   BUS  BUSBUS      O|
-|0   0O0              0O0   0O0  0O00O0      0|
+|S   BUS              BUS   BUS  BUSBUS     BU|
+|0   0O0              0O0   0O0  0O00O0     0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |  BUS   BUS       BUS BUS      BUS    BUS    |
 |  0O0   0O0       0O0 0O0      0O0    0O0    |
@@ -1731,10 +1731,10 @@ Pontos: 2 | Vidas: 1 | Iteracoes: 49
 |                              0O0       0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                 BUSBUS              BUS     |
-|                 0O00O0              0O0    U|
+|                 0O00O0              0O0     |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S            BUS    BUSBUS                  O|
-|0            0O0    0O00O0                  0|
+|S            BUS    BUSBUS                 BU|
+|0            0O0    0O00O0                 0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                                             |
 |                                             |
@@ -1751,10 +1751,10 @@ Pontos: 2 | Vidas: 1 | Iteracoes: 49
 Pontos: 3 | Vidas: 1 | Iteracoes: 50
 |---------------------------------------------|
 |                                             |
-|                                            U|
+|                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S    BUSBUS BUS          BUS                O|
-|0    0O00O0 0O0          0O0                0|
+|S    BUSBUS BUS          BUS               BU|
+|0    0O00O0 0O0          0O0               0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |   BUS              BUS   BUS  BUSBUS     BUS|
 |   0O0              0O0   0O0  0O00O0     0O0|
@@ -1827,10 +1827,10 @@ Pontos: 4 | Vidas: 1 | Iteracoes: 52
 |    0O0    0O00O0 0O0          0O0           |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 | BUS              BUS   BUS  BUSBUS     BUS  |
-| 0O0              0O0   0O0  0O00O0     0O0 U|
+| 0O0              0O0   0O0  0O00O0     0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S    BUS      BUS   BUS       BUS BUS       O|
-|0    0O0      0O0   0O0       0O0 0O0       0|
+|S    BUS      BUS   BUS       BUS BUS      BU|
+|0    0O0      0O0   0O0       0O0 0O0      0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                     BUS       BUS           |
 |                     0O0       0O0           |
@@ -1929,10 +1929,10 @@ Pontos: 5 | Vidas: 1 | Iteracoes: 55
 |                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |             BUS    BUSBUS BUS          BUS  |
-|             0O0    0O00O0 0O0          0O0 U|
+|             0O0    0O00O0 0O0          0O0  |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S              BUS   BUS  BUSBUS     BUS    O|
-|0              0O0   0O0  0O00O0     0O0    0|
+|S              BUS   BUS  BUSBUS     BUS   BU|
+|0              0O0   0O0  0O00O0     0O0   0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 | BUS      BUS    BUS      BUS   BUS       BUS|
 | 0O0      0O0    0O0      0O0   0O0       0O0|
@@ -1961,10 +1961,10 @@ Pontos: 5 | Vidas: 1 | Iteracoes: 55
 Pontos: 6 | Vidas: 1 | Iteracoes: 56
 |---------------------------------------------|
 |                                             |
-|                                            U|
+|                                             |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S               BUS    BUSBUS BUS           O|
-|0               0O0    0O00O0 0O0           0|
+|S               BUS    BUSBUS BUS          BU|
+|0               0O0    0O00O0 0O0          0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |              BUS   BUS  BUSBUS     BUS   BUS|
 |              0O0   0O0  0O00O0     0O0   0O0|
@@ -2113,13 +2113,13 @@ Pontos: 9 | Vidas: 1 | Iteracoes: 60
 | 0O0   0O0       0O0 0O0      0O0    0O0     |
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |       BUS                     ^_^        BUS|
-|       0O0                     (o)        0OU|
+|       0O0                     (o)        0O0|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|S              BUS                      BUS O|
-|0              0O0                      0O0 U|
+|S              BUS                      BUSBU|
+|0              0O0                      0O00O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
-|SBUS                 BUS            BUS     O|
-|00O0                 0O0            0O0     0|
+|SBUS                 BUS            BUS    BU|
+|00O0                 0O0            0O0    0O|
 |-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- |
 |                                             |
 |                                             |

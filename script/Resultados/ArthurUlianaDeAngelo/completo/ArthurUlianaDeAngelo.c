@@ -38,6 +38,15 @@ typedef struct
 
 typedef struct
 {
+    int n_movimentos;
+    int altura_maxima_alcancada;
+    int altura_maxima_atropelada;
+    int altura_minima_atropelada;
+    int n_movimentos_opostos;
+} tEstatisticas;
+
+typedef struct
+{
     int animacao;
     int largura_mapa;
     int qtd_pistas;
@@ -46,6 +55,8 @@ typedef struct
     tGalinha galinha;
 
     tSprites sprites;
+
+    tEstatisticas stats;
 
     int fim;
     int iteracao;
@@ -56,15 +67,28 @@ tSprites CarregaSprites(char diretorio[]);
 tPista DeslocaCarrosPista(tPista pista, int largura_mapa);
 
 tCarro DeslocaCarro(int x, int velocidade, char direcao, int largura_mapa);
+int PegaNumeroCarroPista(int x, tPista pista);
 
 tJogo InicializaJogo(char diretorio[]);
-tJogo JogaJogo(tJogo jogo);
+tJogo JogaJogo(tJogo jogo, char diretorio[]);
+void ImprimeFimJogo(tJogo jogo);
 
 void DesenhaMapa(tJogo jogo, FILE *saida);
 
 char LeJogada();
 tJogo FazJogada(char jogada, tJogo jogo);
 int VerificaColisoes(tJogo jogo);
+int VerificaFim(tJogo jogo);
+
+FILE *AbreArquivoResumo(char diretorio[]);
+void EscreveColisaoResumo(int iteracao, int n_pista, tPista t_pista, int x, int galinha_x, int galinha_y, char diretorio[]);
+void EscreveFimJogoResumo(int iteracao, char diretorio[]);
+
+tEstatisticas InicializaEstatisticas(tEstatisticas stats, int qtd_pistas);
+tEstatisticas AtualizaMovimentos(tEstatisticas stats, char mov);
+tEstatisticas AtualizaAlturasAtropelamenteEstatisticas(tEstatisticas stats, tGalinha galinha, int qtd_pistas);
+tEstatisticas AtualizaAlturaMaxima(tEstatisticas stats, tGalinha galinha, int qtd_pistas);
+void EscreveEstatisticas(tEstatisticas stats, char diretorio[]);
 
 void Debug(tJogo jogo);
 
@@ -78,7 +102,10 @@ int main(int argc, char *argv[])
     }
 
     jogo = InicializaJogo(argv[1]);
-    jogo = JogaJogo(jogo);
+    jogo = JogaJogo(jogo, argv[1]);
+
+    EscreveFimJogoResumo(jogo.iteracao, argv[1]);
+    EscreveEstatisticas(jogo.stats, argv[1]);
 
     ImprimeFimJogo(jogo);
 
@@ -95,6 +122,54 @@ void ImprimeFimJogo(tJogo jogo)
     {
         printf("Voce perdeu todas as vidas! Fim de jogo.\n");
     }
+}
+
+FILE *AbreArquivoResumo(char diretorio[])
+{
+    char arquivo_nome[1100];
+    sprintf(arquivo_nome, "%s/saida/resumo.txt", diretorio);
+
+    FILE *arquivo_resumo = fopen(arquivo_nome, "a+");
+
+    if (arquivo_resumo == NULL)
+    {
+        printf("ERRO: Erro ao abrir o arquivo de resumo.\n");
+        exit(1);
+    }
+
+    return arquivo_resumo;
+}
+
+void EscreveColisaoResumo(int iteracao, int n_pista, tPista t_pista, int x, int galinha_x, int galinha_y, char diretorio[])
+{
+    FILE *arquivo_resumo = AbreArquivoResumo(diretorio);
+
+    int carro = PegaNumeroCarroPista(x, t_pista);
+
+    fprintf(arquivo_resumo, "[%d] Na pista %d o carro %d atropelou a galinha na posicao (%d,%d).\n", iteracao, n_pista + 1, carro, galinha_x, galinha_y * 3 + 1);
+
+    fclose(arquivo_resumo);
+}
+
+int PegaNumeroCarroPista(int x, tPista pista)
+{
+    int i;
+    for (i = 0; i < pista.num_carros; i++)
+    {
+        if (pista.carros[i].x == x)
+            return (i + 1);
+    }
+
+    return -1;
+}
+
+void EscreveFimJogoResumo(int iteracao, char diretorio[])
+{
+    FILE *arquivo_resumo = AbreArquivoResumo(diretorio);
+
+    fprintf(arquivo_resumo, "[%d] Fim de jogo\n", iteracao);
+
+    fclose(arquivo_resumo);
 }
 
 void Debug(tJogo jogo)
@@ -153,31 +228,34 @@ tJogo DeslocaTodasPistas(tJogo jogo)
     return jogo;
 }
 
-tJogo JogaJogo(tJogo jogo)
+tJogo JogaJogo(tJogo jogo, char diretorio[])
 {
     while (!jogo.fim)
     {
         char jogada = LeJogada();
 
-        // printf("Jogada: %d %c | ", jogada, jogada);
         DesenhaMapa(jogo, stdout);
+
+        jogo.iteracao++;
 
         jogo = FazJogada(jogada, jogo);
 
         jogo = DeslocaTodasPistas(jogo);
 
-        if (VerificaColisoes(jogo))
+        int carro_x = VerificaColisoes(jogo);
+
+        if (carro_x != -1)
         {
             jogo.galinha.vidas--;
             jogo.galinha.pontos = 0;
+            EscreveColisaoResumo(jogo.iteracao, jogo.galinha.y, jogo.pistas[jogo.galinha.y], carro_x, jogo.galinha.x, jogo.galinha.y, diretorio);
+            jogo.stats = AtualizaAlturasAtropelamenteEstatisticas(jogo.stats, jogo.galinha, jogo.qtd_pistas);
             jogo.galinha.y = jogo.qtd_pistas - 1;
         }
-        else if (!VerificaColisoes(jogo) && jogada == 'w')
+        else if (carro_x == -1 && jogada == 'w')
         {
             jogo.galinha.pontos++;
         }
-
-        jogo.iteracao++;
 
         jogo.fim = VerificaFim(jogo);
 
@@ -250,13 +328,16 @@ tJogo FazJogada(char jogada, tJogo jogo)
         jogo.galinha.y++;
     }
 
+    jogo.stats = AtualizaMovimentos(jogo.stats, jogada);
+    jogo.stats = AtualizaAlturaMaxima(jogo.stats, jogo.galinha, jogo.qtd_pistas);
+
     return jogo;
 }
 
 int VerificaColisoes(tJogo jogo)
 {
     int i, j;
-    int colidiu = 0;
+    int carro = -1;
 
     int esquerda_galinha = jogo.galinha.x - 1;
     int direita_galinha = jogo.galinha.x + 1;
@@ -275,12 +356,12 @@ int VerificaColisoes(tJogo jogo)
 
         if (!(direita_galinha < esquerda_carro || esquerda_galinha > direita_carro))
         {
-            colidiu = 1;
+            carro = x_carro;
             break;
         }
     }
 
-    return colidiu;
+    return carro;
 }
 
 void GeraArquivoInicializacao(tJogo jogo, char diretorio[])
@@ -323,27 +404,18 @@ void DesenhaMapa(tJogo jogo, FILE *saida)
     {
         for (j = 0; j < jogo.pistas[i].num_carros; j++)
         {
-            int meio = jogo.pistas[i].carros[j].x - 1;
-            int anterior = meio - 1;
-            int posterior = meio + 1;
+            int meio = (jogo.pistas[i].carros[j].x - 1 + jogo.largura_mapa) % jogo.largura_mapa;
+            int anterior = (meio - 1 + jogo.largura_mapa) % jogo.largura_mapa;
+            int posterior = (meio + 1) % jogo.largura_mapa;
 
-            // if (meio == 0)
-            //     anterior = jogo.largura_mapa - 1;
-            // else if (meio == jogo.largura_mapa - 1)
-            //     posterior = 0;
+            int linha = i * 2;
 
-            if (anterior < 0)
-                anterior = jogo.largura_mapa - 1;
-
-            if (posterior > jogo.largura_mapa - 1)
-                posterior = 0;
-
-            mapa[i * 2][anterior] = jogo.sprites.carro[0];
-            mapa[i * 2][meio] = jogo.sprites.carro[1];
-            mapa[i * 2][posterior] = jogo.sprites.carro[2];
-            mapa[(i * 2) + 1][anterior] = jogo.sprites.carro[3];
-            mapa[(i * 2) + 1][meio] = jogo.sprites.carro[4];
-            mapa[(i * 2) + 1][posterior] = jogo.sprites.carro[5];
+            mapa[linha][anterior] = jogo.sprites.carro[0];
+            mapa[linha][meio] = jogo.sprites.carro[1];
+            mapa[linha][posterior] = jogo.sprites.carro[2];
+            mapa[linha + 1][anterior] = jogo.sprites.carro[3];
+            mapa[linha + 1][meio] = jogo.sprites.carro[4];
+            mapa[linha + 1][posterior] = jogo.sprites.carro[5];
         }
     }
 
@@ -352,7 +424,7 @@ void DesenhaMapa(tJogo jogo, FILE *saida)
 
     if (saida == stdout)
     {
-        printf("Pontos: %d | Vidas: %d | Iteracoes: %d\n", jogo.galinha.pontos, jogo.galinha.vidas, jogo.iteracao, jogo.galinha.y);
+        printf("Pontos: %d | Vidas: %d | Iteracoes: %d\n", jogo.galinha.pontos, jogo.galinha.vidas, jogo.iteracao);
     }
 
     for (i = 0; i <= (jogo.qtd_pistas * 2); i++)
@@ -425,11 +497,81 @@ tSprites CarregaSprites(char diretorio[])
     return sprites;
 }
 
+tEstatisticas InicializaEstatisticas(tEstatisticas stats, int qtd_pistas)
+{
+    stats.n_movimentos = 0;
+    stats.n_movimentos_opostos = 0;
+    stats.altura_maxima_alcancada = 0;
+    stats.altura_maxima_atropelada = 0;
+    stats.altura_minima_atropelada = qtd_pistas;
+
+    return stats;
+}
+
+tEstatisticas AtualizaMovimentos(tEstatisticas stats, char mov)
+{
+    if (mov == 'w')
+    {
+        stats.n_movimentos++;
+    }
+    else if (mov == 's')
+    {
+        stats.n_movimentos++;
+        stats.n_movimentos_opostos++;
+    }
+
+    return stats;
+}
+
+tEstatisticas AtualizaAlturasAtropelamenteEstatisticas(tEstatisticas stats, tGalinha galinha, int qtd_pistas)
+{
+    int altura = qtd_pistas - galinha.y;
+
+    if (altura > stats.altura_maxima_atropelada)
+        stats.altura_maxima_atropelada = altura;
+
+    if (altura < stats.altura_minima_atropelada)
+        stats.altura_minima_atropelada = altura;
+
+    return stats;
+}
+
+tEstatisticas AtualizaAlturaMaxima(tEstatisticas stats, tGalinha galinha, int qtd_pistas)
+{
+    stats.altura_maxima_alcancada = ((qtd_pistas - galinha.y) > stats.altura_maxima_alcancada) ? (qtd_pistas - galinha.y) : stats.altura_maxima_alcancada;
+
+    return stats;
+}
+
+void EscreveEstatisticas(tEstatisticas stats, char diretorio[])
+{
+    char arquivo_nome[1100];
+    sprintf(arquivo_nome, "%s/saida/estatistica.txt", diretorio);
+
+    FILE *arquivo_stats = fopen(arquivo_nome, "w");
+
+    if (arquivo_stats == NULL)
+    {
+        printf("ERRO: Erro ao abrir o arquivo de estatisticas.\n");
+        exit(1);
+    }
+
+    fprintf(arquivo_stats, "Numero total de movimentos: %d\n", stats.n_movimentos);
+    fprintf(arquivo_stats, "Altura maxima que a galinha chegou: %d\n", stats.altura_maxima_alcancada);
+    fprintf(arquivo_stats, "Altura maxima que a galinha foi atropelada: %d\n", stats.altura_maxima_atropelada);
+    fprintf(arquivo_stats, "Altura minima que a galinha foi atropelada: %d\n", stats.altura_minima_atropelada);
+    fprintf(arquivo_stats, "Numero de movimentos na direcao oposta: %d\n", stats.n_movimentos_opostos);
+
+    fclose(arquivo_stats);
+}
+
 tJogo InicializaJogo(char diretorio[])
 {
     tJogo jogo;
     char arquivo_config_nome[1100];
     sprintf(arquivo_config_nome, "%s/config_inicial.txt", diretorio);
+
+    jogo.stats = InicializaEstatisticas(jogo.stats, jogo.qtd_pistas);
 
     FILE *arquivo_config = fopen(arquivo_config_nome, "r");
 
@@ -467,6 +609,7 @@ tJogo InicializaJogo(char diretorio[])
             fscanf(arquivo_config, "%d", &jogo.galinha.vidas);
 
             jogo.galinha.y = i;
+            jogo.galinha.pontos = 0;
 
             jogo.pistas[i].direcao = '\0';
             jogo.pistas[i].velocidade = 0;
