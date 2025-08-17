@@ -47,6 +47,13 @@ typedef struct
 
 typedef struct
 {
+    int id_pista;
+    int id_carro;
+    int iteracao;
+} tRanking;
+
+typedef struct
+{
     int animacao;
     int largura_mapa;
     int qtd_pistas;
@@ -84,6 +91,14 @@ FILE *AbreArquivoResumo(char diretorio[]);
 void EscreveColisaoResumo(int iteracao, int n_pista, tPista t_pista, int x, int galinha_x, int galinha_y, char diretorio[]);
 void EscreveFimJogoResumo(int iteracao, char diretorio[]);
 
+void EscreveRanking(tRanking rankings[], char diretorio[], int n_atropelamentos);
+FILE *AbreArquivoRanking(char diretorio[]);
+void OrdenaRankings(tRanking rankings[], int n_atropelamentos);
+
+FILE *AbreArquivoHeatpmap(char diretorio[]);
+void EscreveHeatmap(int heatmap[36][100], int linhas, int colunas, char diretorio[]);
+void AtualizaHeatmap(int heatmap[36][100], int linhas, int colunas, int xGalinha, int yGalinha, int atropelamento);
+
 tEstatisticas InicializaEstatisticas(tEstatisticas stats, int qtd_pistas);
 tEstatisticas AtualizaMovimentos(tEstatisticas stats, char mov);
 tEstatisticas AtualizaAlturasAtropelamenteEstatisticas(tEstatisticas stats, tGalinha galinha, int qtd_pistas);
@@ -104,9 +119,6 @@ int main(int argc, char *argv[])
     jogo = InicializaJogo(argv[1]);
     jogo = JogaJogo(jogo, argv[1]);
 
-    EscreveFimJogoResumo(jogo.iteracao, argv[1]);
-    EscreveEstatisticas(jogo.stats, argv[1]);
-
     ImprimeFimJogo(jogo);
 
     return 0;
@@ -121,6 +133,78 @@ void ImprimeFimJogo(tJogo jogo)
     else if (jogo.fim == DERROTA)
     {
         printf("Voce perdeu todas as vidas! Fim de jogo.\n");
+    }
+}
+
+FILE *AbreArquivoRanking(char diretorio[])
+{
+    char arquivo_nome[1100];
+    sprintf(arquivo_nome, "%s/saida/ranking.txt", diretorio);
+
+    FILE *arquivo_ranking = fopen(arquivo_nome, "w+");
+
+    if (arquivo_ranking == NULL)
+    {
+        printf("ERRO: Erro ao abrir o arquivo de ranking.\n");
+        exit(1);
+    }
+
+    return arquivo_ranking;
+}
+
+void EscreveRanking(tRanking rankings[], char diretorio[], int n_atropelamentos)
+{
+    FILE *arquivo_ranking = AbreArquivoRanking(diretorio);
+
+    OrdenaRankings(rankings, n_atropelamentos);
+
+    fprintf(arquivo_ranking, "id_pista,id_carro,iteracao\n");
+
+    int i;
+    for (i = 0; i < n_atropelamentos; i++)
+    {
+        fprintf(arquivo_ranking, "%d,%d,%d\n", rankings[i].id_pista, rankings[i].id_carro, rankings[i].iteracao);
+    }
+
+    fclose(arquivo_ranking);
+}
+
+void OrdenaRankings(tRanking rankings[], int n_atropelamentos)
+{
+    int i, j, troca = 0;
+
+    for (i = 0; i < n_atropelamentos - 1; i++)
+    {
+        for (j = 0; j < n_atropelamentos - i - 1; j++)
+        {
+            troca = 0;
+
+            if (rankings[j].id_pista > rankings[j + 1].id_pista)
+            {
+                troca = 1;
+            }
+            else if (rankings[j].id_pista == rankings[j + 1].id_pista)
+            {
+                if (rankings[j].id_carro > rankings[j + 1].id_carro)
+                {
+                    troca = 1;
+                }
+                else if (rankings[j].id_carro == rankings[j + 1].id_carro)
+                {
+                    if (rankings[j].iteracao < rankings[j + 1].iteracao)
+                    {
+                        troca = 1;
+                    }
+                }
+            }
+
+            if (troca)
+            {
+                tRanking tmp = rankings[j];
+                rankings[j] = rankings[j + 1];
+                rankings[j + 1] = tmp;
+            }
+        }
     }
 }
 
@@ -228,8 +312,102 @@ tJogo DeslocaTodasPistas(tJogo jogo)
     return jogo;
 }
 
+FILE *AbreArquivoHeatpmap(char diretorio[])
+{
+    char arquivo_nome[1100];
+    sprintf(arquivo_nome, "%s/saida/heatmap.txt", diretorio);
+
+    FILE *arquivo_heatmap = fopen(arquivo_nome, "w");
+
+    if (arquivo_heatmap == NULL)
+    {
+        printf("ERRO: Erro ao abrir o arquivo de heatmap.\n");
+        exit(1);
+    }
+
+    return arquivo_heatmap;
+}
+
+void AtualizaHeatmap(int heatmap[36][100], int linhas, int colunas, int xGalinha, int yGalinha, int atropelamento)
+{
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = -1; j <= 1; j++)
+        {
+            int y = yGalinha * 3 + i;
+            int x = xGalinha + j;
+
+            if (y >= 0 && y < linhas && x >= 0 && x < colunas && heatmap[i][j] != -1)
+            {
+                if (heatmap[y][x] < 99)
+                {
+                    heatmap[y][x - 1]++;
+                }
+            }
+        }
+    }
+
+    if (atropelamento)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            int y = yGalinha * 3 + i;
+            if (y >= 0 && y < linhas)
+            {
+                for (int x = 0; x < colunas; x++)
+                {
+                    heatmap[y][x] = -1;
+                }
+            }
+        }
+    }
+}
+
+void EscreveHeatmap(int heatmap[36][100], int linhas, int colunas, char diretorio[])
+{
+    FILE *arquivo_heatmap = AbreArquivoHeatpmap(diretorio);
+
+    for (int i = 0; i < linhas - 1; i++)
+    {
+        for (int j = 0; j < colunas; j++)
+        {
+            if (heatmap[i][0] == -1)
+            {
+                fprintf(arquivo_heatmap, " * ");
+            }
+            else
+            {
+                fprintf(arquivo_heatmap, "%2d ", heatmap[i][j]);
+            }
+        }
+        fprintf(arquivo_heatmap, "\n");
+    }
+
+    fclose(arquivo_heatmap);
+}
+
+void InicializaHeatmap(int heatmap[36][100], int linhas, int colunas)
+{
+    for (int i = 0; i < linhas; i++)
+    {
+        for (int j = 0; j < colunas; j++)
+        {
+            heatmap[i][j] = 0;
+        }
+    }
+}
+
 tJogo JogaJogo(tJogo jogo, char diretorio[])
 {
+    tRanking rankings[jogo.galinha.vidas];
+    int vidas_iniciais = jogo.galinha.vidas;
+    int n_atropelamentos = 0;
+
+    int heatpmap[36][100];
+
+    InicializaHeatmap(heatpmap, jogo.qtd_pistas * 3, jogo.largura_mapa);
+    AtualizaHeatmap(heatpmap, jogo.qtd_pistas * 3, jogo.largura_mapa, jogo.galinha.x, jogo.galinha.y, 0);
+
     while (!jogo.fim)
     {
         char jogada = LeJogada();
@@ -240,21 +418,35 @@ tJogo JogaJogo(tJogo jogo, char diretorio[])
 
         jogo = FazJogada(jogada, jogo);
 
+        jogo.stats = AtualizaMovimentos(jogo.stats, jogada);
+
         jogo = DeslocaTodasPistas(jogo);
 
         int carro_x = VerificaColisoes(jogo);
+
+        AtualizaHeatmap(heatpmap, jogo.qtd_pistas * 3, jogo.largura_mapa, jogo.galinha.x, jogo.galinha.y, (carro_x != -1));
 
         if (carro_x != -1)
         {
             jogo.galinha.vidas--;
             jogo.galinha.pontos = 0;
+
             EscreveColisaoResumo(jogo.iteracao, jogo.galinha.y, jogo.pistas[jogo.galinha.y], carro_x, jogo.galinha.x, jogo.galinha.y, diretorio);
+
             jogo.stats = AtualizaAlturasAtropelamenteEstatisticas(jogo.stats, jogo.galinha, jogo.qtd_pistas);
+
+            tRanking atropelamento = {jogo.galinha.y + 1, PegaNumeroCarroPista(carro_x, jogo.pistas[jogo.galinha.y]), jogo.iteracao};
+            rankings[n_atropelamentos] = atropelamento;
+            n_atropelamentos++;
+
             jogo.galinha.y = jogo.qtd_pistas - 1;
+
+            AtualizaHeatmap(heatpmap, jogo.qtd_pistas * 3, jogo.largura_mapa, jogo.galinha.x, jogo.galinha.y, 0);
         }
         else if (carro_x == -1 && jogada == 'w')
         {
             jogo.galinha.pontos++;
+            jogo.stats = AtualizaAlturaMaxima(jogo.stats, jogo.galinha, jogo.qtd_pistas);
         }
 
         jogo.fim = VerificaFim(jogo);
@@ -269,11 +461,20 @@ tJogo JogaJogo(tJogo jogo, char diretorio[])
         {
             break;
         }
-
-        // Debug(jogo);
     }
 
+    if (jogo.stats.altura_minima_atropelada == jogo.qtd_pistas * 3 + 1)
+        jogo.stats.altura_minima_atropelada = 0;
+
+    if (jogo.stats.altura_maxima_alcancada == 0)
+        jogo.stats.altura_maxima_alcancada = 2;
+
     DesenhaMapa(jogo, stdout);
+
+    EscreveFimJogoResumo(jogo.iteracao, diretorio);
+    EscreveEstatisticas(jogo.stats, diretorio);
+    EscreveRanking(rankings, diretorio, n_atropelamentos);
+    EscreveHeatmap(heatpmap, jogo.qtd_pistas * 3, jogo.largura_mapa, diretorio);
 
     return jogo;
 }
@@ -327,9 +528,6 @@ tJogo FazJogada(char jogada, tJogo jogo)
     {
         jogo.galinha.y++;
     }
-
-    jogo.stats = AtualizaMovimentos(jogo.stats, jogada);
-    jogo.stats = AtualizaAlturaMaxima(jogo.stats, jogo.galinha, jogo.qtd_pistas);
 
     return jogo;
 }
@@ -503,7 +701,7 @@ tEstatisticas InicializaEstatisticas(tEstatisticas stats, int qtd_pistas)
     stats.n_movimentos_opostos = 0;
     stats.altura_maxima_alcancada = 0;
     stats.altura_maxima_atropelada = 0;
-    stats.altura_minima_atropelada = qtd_pistas;
+    stats.altura_minima_atropelada = qtd_pistas * 3 + 1;
 
     return stats;
 }
@@ -525,7 +723,7 @@ tEstatisticas AtualizaMovimentos(tEstatisticas stats, char mov)
 
 tEstatisticas AtualizaAlturasAtropelamenteEstatisticas(tEstatisticas stats, tGalinha galinha, int qtd_pistas)
 {
-    int altura = qtd_pistas - galinha.y;
+    int altura = (qtd_pistas - galinha.y) * 3 - 1;
 
     if (altura > stats.altura_maxima_atropelada)
         stats.altura_maxima_atropelada = altura;
@@ -538,7 +736,8 @@ tEstatisticas AtualizaAlturasAtropelamenteEstatisticas(tEstatisticas stats, tGal
 
 tEstatisticas AtualizaAlturaMaxima(tEstatisticas stats, tGalinha galinha, int qtd_pistas)
 {
-    stats.altura_maxima_alcancada = ((qtd_pistas - galinha.y) > stats.altura_maxima_alcancada) ? (qtd_pistas - galinha.y) : stats.altura_maxima_alcancada;
+    int altura = (qtd_pistas - galinha.y) * 3 - 1;
+    stats.altura_maxima_alcancada = ((altura) > stats.altura_maxima_alcancada) ? (altura) : stats.altura_maxima_alcancada;
 
     return stats;
 }
@@ -570,8 +769,6 @@ tJogo InicializaJogo(char diretorio[])
     tJogo jogo;
     char arquivo_config_nome[1100];
     sprintf(arquivo_config_nome, "%s/config_inicial.txt", diretorio);
-
-    jogo.stats = InicializaEstatisticas(jogo.stats, jogo.qtd_pistas);
 
     FILE *arquivo_config = fopen(arquivo_config_nome, "r");
 
@@ -636,6 +833,8 @@ tJogo InicializaJogo(char diretorio[])
 
     // DesenhaMapa(jogo, stdout);
     GeraArquivoInicializacao(jogo, diretorio);
+
+    jogo.stats = InicializaEstatisticas(jogo.stats, jogo.qtd_pistas);
 
     return jogo;
 }

@@ -1,4 +1,8 @@
+ArthurUlianaDeAngelo.c: In function ‘JogaJogo’:
+ArthurUlianaDeAngelo.c:403:9: warning: unused variable ‘vidas_iniciais’ [-Wunused-variable]
+  403 |     int vidas_iniciais = jogo.galinha.vidas;
+      |         ^~~~~~~~~~~~~~
 ArthurUlianaDeAngelo.c: In function ‘VerificaColisoes’:
-ArthurUlianaDeAngelo.c:339:9: warning: unused variable ‘i’ [-Wunused-variable]
-  339 |     int i, j;
+ArthurUlianaDeAngelo.c:537:9: warning: unused variable ‘i’ [-Wunused-variable]
+  537 |     int i, j;
       |         ^
