@@ -85,6 +85,7 @@ void EscreveRanking(tRanking rankings[], char diretorio[], int n_atropelamentos)
 void OrdenaRankings(tRanking rankings[], int n_atropelamentos);
 
 /* FUNCOES DA GERACAO DO ARQUIVO DE ESTATISTICA */
+FILE *AbreArquivoEstatistics(char diretorio[]);
 tEstatisticas InicializaEstatisticas(tEstatisticas stats, int qtd_pistas);
 tEstatisticas AtualizaMovimentos(tEstatisticas stats, char mov);
 tEstatisticas AtualizaAlturasAtropelamenteEstatisticas(tEstatisticas stats, tGalinha galinha, int qtd_pistas);
@@ -92,14 +93,19 @@ tEstatisticas AtualizaAlturaMaxima(tEstatisticas stats, tGalinha galinha, int qt
 void EscreveEstatisticas(tEstatisticas stats, char diretorio[]);
 
 /* FUNCOES DA GERACAO DO ARQUIVO DE HEATMAP */
-void InicializaHeatmap(int heatmap[36][100], int linhas, int colunas);
 FILE *AbreArquivoHeatpmap(char diretorio[]);
+void InicializaHeatmap(int heatmap[36][100], int linhas, int colunas);
 void AtualizaHeatmap(int heatmap[36][100], int linhas, int colunas, int xGalinha, int yGalinha, int atropelamento);
 void EscreveHeatmap(int heatmap[36][100], int linhas, int colunas, char diretorio[]);
 
 /* FUNCOES PARA GERENCIAR JOGADAS */
 char LeJogada();
-tJogo FazJogada(char jogada, tJogo jogo);
+
+/* FUNCOES DA GALINHA */
+tGalinha FazJogada(tGalinha galinha, char jogada, int qtd_pistas);
+tGalinha PerdeVidaGalinha(tGalinha galinha);
+tGalinha ResetaPontosGalinha(tGalinha galinha);
+tGalinha ResetaYGalinha(tGalinha galinha, int novo_y);
 
 /* FUNCOES DAS PISTAS */
 tPista DiminuiVelocidadePista(tPista pista);
@@ -116,23 +122,6 @@ int VerificaFim(tJogo jogo);
 int VerificaColisoes(tJogo jogo);
 void DesenhaMapa(tJogo jogo, FILE *saida);
 void ImprimeFimJogo(tJogo jogo);
-
-tJogo jogo;
-int main(int argc, char *argv[])
-{
-    if (argc != 2)
-    {
-        printf("ERRO: Informe o diretorio com os arquivos de configuracao!\n");
-        exit(1);
-    }
-
-    jogo = InicializaJogo(argv[1]);
-    jogo = JogaJogo(jogo, argv[1]);
-
-    ImprimeFimJogo(jogo);
-
-    return 0;
-}
 
 /* FUNCOES PARA LER E GERAR A CONFIGURACAO INICIAL */
 tJogo InicializaJogo(char diretorio[])
@@ -210,7 +199,7 @@ tJogo InicializaJogo(char diretorio[])
     return jogo;
 }
 
-void EscreveInicializacao(tJogo jogo, char diretorio[]) // Gera o arquivo
+FILE *AbreArquivoInicializacao(char diretorio[])
 {
     char caminho_arquivo[1100];
     sprintf(caminho_arquivo, "%s/saida/inicializacao.txt", diretorio);
@@ -219,9 +208,16 @@ void EscreveInicializacao(tJogo jogo, char diretorio[]) // Gera o arquivo
 
     if (arquivo == NULL)
     {
-        printf("ERRO: Erro ao criar arquivo de saida da inicializacao.\n");
+        printf("ERRO: Erro ao criar arquivo de saida da inicializacao em %s\n", caminho_arquivo);
         exit(1);
     }
+
+    return arquivo;
+}
+
+void EscreveInicializacao(tJogo jogo, char diretorio[]) // Gera o arquivo
+{
+    FILE *arquivo = AbreArquivoInicializacao(diretorio);
 
     DesenhaMapa(jogo, arquivo);
     fprintf(arquivo, "A posicao central da galinha iniciara em (%d %d).", jogo.galinha.x, jogo.galinha.y * 3 + 1);
@@ -268,7 +264,7 @@ FILE *AbreArquivoResumo(char diretorio[])
 
     if (arquivo_resumo == NULL)
     {
-        printf("ERRO: Erro ao abrir o arquivo de resumo.\n");
+        printf("ERRO: Erro ao abrir o arquivo de resumo %s\n", arquivo_nome);
         exit(1);
     }
 
@@ -306,7 +302,7 @@ FILE *AbreArquivoRanking(char diretorio[])
 
     if (arquivo_ranking == NULL)
     {
-        printf("ERRO: Erro ao abrir o arquivo de ranking.\n");
+        printf("ERRO: Erro ao abrir o arquivo de ranking %s\n", arquivo_nome);
         exit(1);
     }
 
@@ -370,6 +366,22 @@ void OrdenaRankings(tRanking rankings[], int n_atropelamentos)
 }
 
 /* FUNCOES DA GERACAO DO ARQUIVO DE ESTATISTICA */
+FILE *AbreArquivoEstatistics(char diretorio[])
+{
+    char arquivo_nome[1100];
+    sprintf(arquivo_nome, "%s/saida/estatistica.txt", diretorio);
+
+    FILE *arquivo_stats = fopen(arquivo_nome, "w");
+
+    if (arquivo_stats == NULL)
+    {
+        printf("ERRO: Erro ao abrir o arquivo de estatisticas %s\n", arquivo_nome);
+        exit(1);
+    }
+
+    return arquivo_stats;
+}
+
 tEstatisticas InicializaEstatisticas(tEstatisticas stats, int qtd_pistas)
 {
     stats.n_movimentos = 0;
@@ -419,16 +431,7 @@ tEstatisticas AtualizaAlturaMaxima(tEstatisticas stats, tGalinha galinha, int qt
 
 void EscreveEstatisticas(tEstatisticas stats, char diretorio[])
 {
-    char arquivo_nome[1100];
-    sprintf(arquivo_nome, "%s/saida/estatistica.txt", diretorio);
-
-    FILE *arquivo_stats = fopen(arquivo_nome, "w");
-
-    if (arquivo_stats == NULL)
-    {
-        printf("ERRO: Erro ao abrir o arquivo de estatisticas.\n");
-        exit(1);
-    }
+    FILE *arquivo_stats = AbreArquivoEstatistics(diretorio);
 
     fprintf(arquivo_stats, "Numero total de movimentos: %d\n", stats.n_movimentos);
     fprintf(arquivo_stats, "Altura maxima que a galinha chegou: %d\n", stats.altura_maxima_alcancada);
@@ -440,17 +443,6 @@ void EscreveEstatisticas(tEstatisticas stats, char diretorio[])
 }
 
 /* FUNCOES DA GERACAO DO ARQUIVO DE HEATMAP */
-void InicializaHeatmap(int heatmap[36][100], int linhas, int colunas)
-{
-    for (int i = 0; i < linhas; i++)
-    {
-        for (int j = 0; j < colunas; j++)
-        {
-            heatmap[i][j] = 0;
-        }
-    }
-}
-
 FILE *AbreArquivoHeatpmap(char diretorio[])
 {
     char arquivo_nome[1100];
@@ -460,11 +452,22 @@ FILE *AbreArquivoHeatpmap(char diretorio[])
 
     if (arquivo_heatmap == NULL)
     {
-        printf("ERRO: Erro ao abrir o arquivo de heatmap.\n");
+        printf("ERRO: Erro ao abrir o arquivo de heatmap %s\n", arquivo_nome);
         exit(1);
     }
 
     return arquivo_heatmap;
+}
+
+void InicializaHeatmap(int heatmap[36][100], int linhas, int colunas)
+{
+    for (int i = 0; i < linhas; i++)
+    {
+        for (int j = 0; j < colunas; j++)
+        {
+            heatmap[i][j] = 0;
+        }
+    }
 }
 
 void AtualizaHeatmap(int heatmap[36][100], int linhas, int colunas, int xGalinha, int yGalinha, int atropelamento)
@@ -540,18 +543,35 @@ char LeJogada()
     return jogada;
 }
 
-tJogo FazJogada(char jogada, tJogo jogo)
+tGalinha FazJogada(tGalinha galinha, char jogada, int qtd_pistas)
 {
     if (jogada == 'w')
-    {
-        jogo.galinha.y--;
-    }
-    else if (jogada == 's' && jogo.galinha.y < jogo.qtd_pistas - 1)
-    {
-        jogo.galinha.y++;
-    }
+        galinha.y--;
+    else if (jogada == 's' && galinha.y < qtd_pistas - 1)
+        galinha.y++;
 
-    return jogo;
+    return galinha;
+}
+
+tGalinha PerdeVidaGalinha(tGalinha galinha)
+{
+    galinha.vidas--;
+
+    return galinha;
+}
+
+tGalinha ResetaPontosGalinha(tGalinha galinha)
+{
+    galinha.pontos = 0;
+
+    return galinha;
+}
+
+tGalinha ResetaYGalinha(tGalinha galinha, int novo_y)
+{
+    galinha.y = novo_y;
+
+    return galinha;
 }
 
 /* FUNCOES DAS PISTAS */
@@ -628,7 +648,7 @@ tJogo JogaJogo(tJogo jogo, char diretorio[])
     {
         char jogada = LeJogada();
 
-        jogo = FazJogada(jogada, jogo);
+        jogo.galinha = FazJogada(jogo.galinha, jogada, jogo.qtd_pistas);
 
         jogo.iteracao++;
 
@@ -642,8 +662,8 @@ tJogo JogaJogo(tJogo jogo, char diretorio[])
 
         if (carro_x != -1)
         {
-            jogo.galinha.vidas--;
-            jogo.galinha.pontos = 0;
+            jogo.galinha = PerdeVidaGalinha(jogo.galinha);
+            jogo.galinha = ResetaPontosGalinha(jogo.galinha);
 
             EscreveColisaoResumo(jogo.iteracao, jogo.galinha.y, jogo.pistas[jogo.galinha.y], carro_x, jogo.galinha.x, jogo.galinha.y, diretorio);
 
@@ -658,7 +678,7 @@ tJogo JogaJogo(tJogo jogo, char diretorio[])
                 jogo.pistas[jogo.galinha.y] = DiminuiVelocidadePista(jogo.pistas[jogo.galinha.y]);
             }
 
-            jogo.galinha.y = jogo.qtd_pistas - 1;
+            jogo.galinha = ResetaYGalinha(jogo.galinha, jogo.qtd_pistas - 1);
 
             AtualizaHeatmap(heatpmap, jogo.qtd_pistas * 3, jogo.largura_mapa, jogo.galinha.x, jogo.galinha.y, 0);
         }
@@ -858,4 +878,21 @@ void ImprimeFimJogo(tJogo jogo)
     {
         printf("Voce perdeu todas as vidas! Fim de jogo.\n");
     }
+}
+
+tJogo jogo;
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        printf("ERRO: Informe o diretorio com os arquivos de configuracao!\n");
+        exit(1);
+    }
+
+    jogo = InicializaJogo(argv[1]);
+    jogo = JogaJogo(jogo, argv[1]);
+
+    ImprimeFimJogo(jogo);
+
+    return 0;
 }
